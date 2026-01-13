@@ -1,0 +1,60 @@
+# So_INF13
+
+# 1- Criação de grupos
+comando: sudo groupadd desenvolvedores
+comando: sudo groupadd testadores
+
+* verificação
+saida: desenvolvedores:x:1001:
+saida: testadores:x:1002:
+
+# 2- Criação de usuario
+comando: sudo useradd -m -g desenvolvedores dev_senior
+comando: sudo useradd -m -g desenvolvedores dev_junior
+comando: sudo useradd -m -g testadores qa_analyst
+comando: sudo usermod -aG testadores dev_senior
+
+*verificação
+saida: uid=1001(dev_senior) gid=1001(desenvolvedores) groups=1001(desenvolvedores),1002(testadores)
+saida: uid=1002(dev_senior) gid=1001(desenvolvedores) groups=1001(desenvolvedores)
+saida: uid=1003(dev_senior) gid=1002(testadores) groups=1002(testadores)
+
+# 3- Definição de senhas
+comando: sudo passwd dev_senior
+comando: sudo passwd dev_junior
+comando:sudo passwd qa_analyst
+
+*verificação
+saida: dev_senior P
+saida: dev_junior P
+saida: qa_analyst P
+
+# 4- Estrutura de diretorios
+comando: sudo mkdir -p /srv/projetos/backend
+comando: sudo mkdir -p /srv/projetos/frontend
+
+*verificação
+saida: drwxr-xr-x 2 root root 4096 jan 13 13:21 backend
+saida: drwxr-xr-x 2 root root 4096 jan 13 13:21 frontend
+
+# 5- Gerencimento de permissões
+comando: sudo chown -R dev_senior:desenvolvedores /srv/projetos
+comando: sudo chmod -R 750 /srv/projetos
+
+*verificação
+
+saida: drwxr -xr -x 4 root root 4096 jan 10:37 projetos
+
+# 6- Controle de processos
+comando: su - dev_junior
+comando: sleep 500&
+comando: ps aux | grep sleep
+comando: sudo kill <PID>
+
+*verificação
+
+saida: dev_junior+ 4388 0.0 0.0 8288 2060 pts/0   S   10:52  0:00 sleep 500
+saida: dev_junior+ 4398 0.0 0.0 9144 2284 pts/0   S+  10:52  0:00 sleep grep sleep
+saida: [2] + stopped (tty input)        sudo kill sleep 500
+
+# 7- Shell script de boas-vindas
