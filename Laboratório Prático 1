@@ -58,3 +58,22 @@ saida: dev_junior+ 4398 0.0 0.0 9144 2284 pts/0   S+  10:52  0:00 sleep grep sle
 saida: [2] + stopped (tty input)        sudo kill sleep 500
 
 # 7- Shell script de boas-vindas
+comando: sudo nano /usr/local/bin/boasvindas.sh
+comando: #!/bin/bash
+comando: echo '=========================================='
+comando: echo 'Bem-vindo(a) ao Servidor de Desenvolvimento!'
+comando: echo "Data e hora atual: $(date)"
+comando: echo '=========================================='
+comando: sudo chmod 755 /usr/local/bin/boasvindas.sh
+comando: /usr/local/bin/boasvindas.sh
+comando: source /etc/profile
+
+*verificação
+
+saida: Salvar o conteúdo no arquivo
+saida: -rwxr -xr -x root root 186 jan 15 09:27 /usr/local/bin/boasvindas.sh
+saida: 
+===================================
+Bem-vindo(a) ao Servidor de Desenvolvimento!
+Data e hora atual: ...
+==========================================
