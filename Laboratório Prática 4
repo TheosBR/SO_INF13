@@ -1,0 +1,22 @@
+# Atividade INF-13
+
+## 1- Instalação do Servidor OpenSSH
+comando: sudo apt-get update 
+comando: sudo apt-get install openssh-server
+comando: sudo systemctl status ssh
+
+*verificação
+
+saida: hit:1 http://archive.ubuntu.com/ubuntu noble InRelease
+saida: Instalar o pacote do servidor OpenSSH
+#ultima linha da saida 'Processing triggers for ufw (0.36.2-6) ...
+saida: Active(runnig)
+
+## 2- Acesso Inicial (Validação)
+comando: ssh usuario@IP_DA_VM
+comando: Digite 'yes'
+comando: Senha do usuário
+
+*verificação
+
+saida: 
