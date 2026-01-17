@@ -1,4 +1,4 @@
-# Atividade INF-13
+# Atividade 2 INF-13
 
 ## 1- Instalação do Servidor OpenSSH
 comando: sudo apt-get update 
@@ -19,4 +19,28 @@ comando: Senha do usuário
 
 *verificação
 
-saida: 
+saida: Are you sure you want to continue connecting (yes/no[fingerprint])? yes/no
+saida: senha do usuario 'root'
+saida: Acesso remoto bem sucedido
+
+## 3- Configuração de Segurança
+comando: sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bkp
+comando: sudo nano /etc/ssh/sshd_config
+comando: Port 2244
+comando: PermitRootLogin no
+comando: Ctrl+O, Enter, Ctrl+X
+
+*verificação
+
+saida: pedido pra do usuario
+saida: Port alterado para 2244
+saida: Novo Port salvo
+
+## 4- Teste e Validação Final
+comando: sudo systemctl restart sshd
+comando: ssh usuario@IP_DA_VM -p 2244
+comando: ssh root@IP_DA_VM -p 2244
+
+*verificação
+
+saida: port 2244: refused
