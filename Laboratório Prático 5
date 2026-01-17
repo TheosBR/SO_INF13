@@ -1,0 +1,55 @@
+# Atividade 3 INF13
+
+## 1- Instalação do SAMBA
+comando: sudo apt-get update
+comando: sudo apt-get install samba
+
+*verificação
+
+saida: Pacotes do servidor samba instalados
+
+## 2- Adicionar Usuários ao SAMBA
+comando: sudo smbpasswd -a dev_senior
+comando: sudo smbpasswd -a dev_junior
+
+*verificação
+
+saida: Added user dev_senior
+saida: Added user dev_junior
+
+## 3- Criar Diretórios para Compartilhamento
+comando: sudo mkdir -p /srv/samba/publico
+comando: sudo chown nobody:nogroup /srv/samba/publico
+comando: sudo chmod 777 /srv/samba/publico
+
+*verificação
+
+saida: drwxrexrwx 2 nobody nogroup
+
+## 4- Configurar os Compartilhamentos
+comando: sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bkp
+comando: sudo nano /etc/samba/smb.conf
+comando:  [Publico]
+          comment = Compartilhamento Publico de Arquivos
+          path = /srv/samba/publico
+          browsable = yes
+          writable = yes
+          guest ok = yes
+          read only = no
+
+comando:  [Projetos]
+          comment = Acesso restrito para a Equipe de Desenvolvimento
+          path = /srv/projetos
+          valid users = @desenvolvedores
+          read only = no
+          browsable = yes
+          writable = yes
+
+*verificação
+
+saida: Configuração dos compartilhamnetos feito sem erros
+
+## 5- Reiniciar e Testar
+comando: sudo systemctl restart smbd
+comando: sudo systemctl restart nmbd
+comando: testparm
