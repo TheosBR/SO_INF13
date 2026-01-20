@@ -53,3 +53,9 @@ saida: Configuração dos compartilhamnetos feito sem erros
 comando: sudo systemctl restart smbd
 comando: sudo systemctl restart nmbd
 comando: testparm
+
+*verificação
+
+saida: smbd.srvice - Samba SMB daemon active: active(running)
+saida: Pasta publica acessada
+saida: Pasta privada acessada password for [Projetos]: senha
