@@ -1,7 +1,7 @@
 # Atividade 4 INF13
 
 ## 1- Instalar e Configurar o Servidor Web (Apache)
-comando: sudo apt-get update sudo
+comando: sudo apt-get update sudo         
 comando: apt-get install apache2
 
 *verificação
@@ -29,3 +29,10 @@ comando: sudo nano /etc/bind/db.empresa.local
          @ IN NS ns1.empresa.local.
          ns1 IN A IP_DA_VM
          www IN A IP_DA_VM
+
+*verificação
+
+saida: Nova zona do bind9 empresa.local configurada
+saida: Arquivo da zona criado
+
+## 3-
