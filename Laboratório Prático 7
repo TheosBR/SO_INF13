@@ -1,2 +1,45 @@
 #Atividade 5   SO_INF13
 
+## 1- Configurar o Firewall com IPTABLES
+comando: nano firewall.sh (adicionar o conteúdo)
+comando: chmod +x firewall.sh
+         sudo ./firewall.sh
+
+*verficação
+
+saida: script firewall.sh adicionado
+saida: password for vboxuser:
+       Aplicando regras antigas...
+       Firewall configurado!
+
+## 2- Instalar e Configurar o Proxy (Squid)
+comando: sudo apt-get install squid
+comando: sudo nano /etc/squid/sites_bloqueados.txt
+        .facebook.com
+        .twitter.com
+        .instagram.com
+comando: sudo nano /etc/squid/squid.conf
+acl sites_bloqueados dstdomain "/etc/squid/sites_bloqueados.txt"
+http_access deny sites_bloqueados 
+
+*verificação
+
+saida: squid instalado
+saida: lista de sites bloqueados editada
+saida: squid.conf configurado
+
+## 3- Reiniciar e Testar
+comando: sudo systemctl restart squid
+comando: De outra máquina, tente acessar uma porta não liberada (ex:
+telnetIP_DA_VM 1234). Deve falhar.
+comando: Configure navegador do cliente para usar proxy IP_DA_VM:3128 e:
+• Acesse google.com → deve abrir.
+• Acesse facebook.com → deve bloquear.
+
+*verificação
+
+saida: squid reiniciado
+saida: teste do acesso a porta negado
+saida: teste do proxy feito
+http//:www.google.com acessado normalmente
+http//:www.twiter.com acesso negado por estar bloqueado
