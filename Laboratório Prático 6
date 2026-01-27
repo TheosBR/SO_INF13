@@ -34,6 +34,8 @@ comando: sudo nano /etc/bind/db.empresa.local
 
 saida: Nova zona do bind9 empresa.local configurada
 saida: Arquivo da zona criado
+saida: ;; ANSWER SECTION:
+       WWW.empresa.local.         604800  IN     A       10.0.2.15   
 
 ## 3- Reiniciar, Configurar Cliente e Testar
 comando: sudo systemctl restart bind9
@@ -41,3 +43,10 @@ comando: /etc/resolv.conf:
 comando: nameserver 127.0.0.1
 comando: dig www.empresa.local
 comando: curl http://www.empresa.local
+
+*verificação
+
+saida: serviço reiniciado
+saida: nameserver 127.0.0.1 adicionado
+saida: WWW.empresa.local.         604800  IN     A       10.0.2.15
+saida: Bem-vindo ao servidor web da empresa
